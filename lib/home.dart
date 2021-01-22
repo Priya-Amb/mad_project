@@ -13,24 +13,25 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String title = 'Home';
   int index = 0;
-  List<Widget>list = [About(),Profile(),Medicare(),Mediburn()];
+  List<Widget> list = [About(), Profile(), Medicare(), Mediburn()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
-          title:Text(title),
-          ),
-         // body: Home(),
+          title: Text(title),
+        ),
+        // body: Home(),
         //  drawer:MyDrawer(),
-          body: list[index],
-          drawer: MyDrawer(onTap: (context,i,txt){
-          setState(() {
-            index = i;
-            title = txt;
-            Navigator.pop(context);
-          });
-          },)
-        );
+        body: list[index],
+        drawer: MyDrawer(
+          onTap: (context, i, txt) {
+            setState(() {
+              index = i;
+              title = txt;
+              Navigator.pop(context);
+            });
+          },
+        ));
   }
 }
