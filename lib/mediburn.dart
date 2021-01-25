@@ -62,11 +62,17 @@ class _MediburnState extends State<Mediburn> {
                   crossAxisCount: 2,
                   children: <Widget>[
                     InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => MediburnExerciseScreen( imageUrl:'images/disinfection.jpg',)),
-              );
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MediburnExerciseScreen(
+                                    imageUrl: 'images/disinfection.jpg',
+                                    title: 'Arms',
+                                  )),
+                        );
                       },
-                                          child: Container(
+                      child: Container(
                         padding: const EdgeInsets.all(8),
                         child: Container(
                           decoration: BoxDecoration(
@@ -81,46 +87,82 @@ class _MediburnState extends State<Mediburn> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MediburnExerciseScreen(
+                                    imageUrl: 'images/scanning.jpg',
+                                    title: 'Legs',
+                                  )),
+                        );
+                      },
                       child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/scanning.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
+                        padding: const EdgeInsets.all(8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/scanning.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              )),
+                        ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MediburnExerciseScreen(
+                                    imageUrl: 'images/facemask.jpg',
+                                    title: 'Wings',
+                                  )),
+                        );
+                      },
                       child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/facemask.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
+                        padding: const EdgeInsets.all(8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/facemask.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              )),
+                        ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MediburnExerciseScreen(
+                                    imageUrl: 'images/screening.jpg',
+                                    title: 'Warmups',
+                                  )),
+                        );
+                      },
                       child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/screening.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
+                        padding: const EdgeInsets.all(8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/screening.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              )),
+                        ),
                       ),
                     ),
                   ],

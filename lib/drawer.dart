@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:mad_project/login.dart';
+import 'package:mad_project/models/user_data.dart';
 import 'package:mad_project/preference_helper.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   final Function onTap;
+
   MyDrawer({this.onTap});
+
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  UserData userData;
+
   @override
   Widget build(BuildContext context) {
+    getUserData();
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: Drawer(
@@ -32,18 +43,11 @@ class MyDrawer extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      'Super Hero',
+                      userData?.name ?? "",
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      'Super_hero@nyp.edu.sg',
-                      style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
                   ],
                 ),
@@ -52,22 +56,22 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Mediburn'),
-              onTap: () => onTap(context, 0, 'Mediburn'),
+              onTap: () => widget.onTap(context, 0, 'Mediburn'),
             ),
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Medicare'),
-              onTap: () => onTap(context, 1, 'Medicare'),
+              onTap: () => widget.onTap(context, 1, 'Medicare'),
             ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
-              onTap: () => onTap(context, 3, 'Profile'),
+              onTap: () => widget.onTap(context, 3, 'Profile'),
             ),
             ListTile(
               leading: Icon(Icons.question_answer),
               title: Text('About'),
-              onTap: () => onTap(context, 2, 'About'),
+              onTap: () => widget.onTap(context, 2, 'About'),
             ),
             ListTile(
                 leading: Icon(Icons.exit_to_app),
@@ -83,5 +87,10 @@ class MyDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  getUserData() async {
+    userData = await PreferenceHelper.getUserData();
+    setState(() {});
   }
 }

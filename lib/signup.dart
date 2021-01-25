@@ -121,8 +121,10 @@ class _SignupState extends State<Signup> {
               } else {
                 await PreferenceHelper.saveUser(UserData(nameController.text,
                     emailController.text, passwordController.text));
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                    (value) => false);
               }
             },
             child: Text(

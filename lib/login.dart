@@ -2,33 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mad_project/constants.dart';
 import 'package:mad_project/home.dart';
+import 'package:mad_project/models/user_data.dart';
+import 'package:mad_project/preference_helper.dart';
 import 'signup.dart';
 
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
+
 class _LoginState extends State<Login> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xffe4dbea),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: layout(),
-        backgroundColor: Colors.white);
+    return Scaffold(body: layout(), backgroundColor: Colors.white);
   }
 
   Widget layout() {
@@ -88,8 +77,7 @@ class _LoginState extends State<Login> {
           width: 250,
           child: RaisedButton(
             onPressed: () async {
-              if (
-                  nameController.text.trim().isEmpty ||
+              if (nameController.text.trim().isEmpty ||
                   passwordController.text.trim().isEmpty) {
                 Fluttertoast.showToast(
                     msg: "Please enter all the fields",
@@ -100,10 +88,11 @@ class _LoginState extends State<Login> {
                     textColor: Colors.white,
                     fontSize: 16.0);
                 return;
-              } 
-              else if( nameController.text.toLowerCase() != Constants.userLoginName.toLowerCase() || passwordController.text.toLowerCase() != Constants.userLoginPassword.toLowerCase())
-              {
-                    Fluttertoast.showToast(
+              } else if (nameController.text.toLowerCase() !=
+                      Constants.userLoginName.toLowerCase() ||
+                  passwordController.text.toLowerCase() !=
+                      Constants.userLoginPassword.toLowerCase()) {
+                Fluttertoast.showToast(
                     msg: "Credientials mismatched",
                     toastLength: Toast.LENGTH_SHORT,
                     gravity: ToastGravity.BOTTOM,
@@ -112,14 +101,13 @@ class _LoginState extends State<Login> {
                     textColor: Colors.white,
                     fontSize: 16.0);
                 return;
-              }
-              
-              else 
-              {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Home()),
-              );
+              } else {
+                await PreferenceHelper.saveUser(
+                    UserData(nameController.text, "", passwordController.text));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                    (value) => false);
               }
             },
             child: Text(
@@ -133,6 +121,9 @@ class _LoginState extends State<Login> {
                   color: const Color(0xffe4dbea),
                 )),
           ),
+        ),
+        SizedBox(
+          height: 20,
         ),
         Center(
           child: Row(

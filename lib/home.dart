@@ -13,7 +13,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String title = 'Mediburn';
   int index = 0;
-  List<Widget> list = [Mediburn(), Medicare(), About(), Profile(),];
+  List<Widget> list = [
+    Mediburn(),
+    Medicare(),
+    About(),
+    Profile(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
