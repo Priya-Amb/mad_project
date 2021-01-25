@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mad_project/mediburn_exercise_screen.dart';
 import 'package:mad_project/models/user_data.dart';
 import 'package:mad_project/preference_helper.dart';
 
@@ -43,16 +44,6 @@ class _MediburnState extends State<Mediburn> {
                   ]),
               style: TextStyle(fontSize: 45),
             ),
-            SizedBox(height: 25),
-            TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search, size: 18),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                hintText: 'Search',
-              ),
-            ),
             SizedBox(
               height: 80,
             ),
@@ -65,23 +56,29 @@ class _MediburnState extends State<Mediburn> {
             ),
             SizedBox(height: 15),
             SizedBox(
-                height: 200,
+                height: 350,
                 child: GridView.count(
                   padding: const EdgeInsets.all(20),
                   crossAxisCount: 2,
                   children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('images/disinfection.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15),
-                            )),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MediburnExerciseScreen( imageUrl:'images/disinfection.jpg',)),
+              );
+                      },
+                                          child: Container(
+                        padding: const EdgeInsets.all(8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('images/disinfection.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                              )),
+                        ),
                       ),
                     ),
                     Container(

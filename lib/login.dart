@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mad_project/constants.dart';
 import 'package:mad_project/home.dart';
 import 'signup.dart';
 
@@ -6,8 +8,10 @@ class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
-
 class _LoginState extends State<Login> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +56,7 @@ class _LoginState extends State<Login> {
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
           child: TextField(
+            controller: nameController,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.people, size: 18),
                 hintText: 'UserName',
@@ -66,6 +71,7 @@ class _LoginState extends State<Login> {
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
           child: TextField(
+            controller: passwordController,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock, size: 18),
                 hintText: 'Password',
@@ -81,11 +87,40 @@ class _LoginState extends State<Login> {
           height: 50,
           width: 250,
           child: RaisedButton(
-            onPressed: () {
+            onPressed: () async {
+              if (
+                  nameController.text.trim().isEmpty ||
+                  passwordController.text.trim().isEmpty) {
+                Fluttertoast.showToast(
+                    msg: "Please enter all the fields",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                return;
+              } 
+              else if( nameController.text.toLowerCase() != Constants.userLoginName.toLowerCase() || passwordController.text.toLowerCase() != Constants.userLoginPassword.toLowerCase())
+              {
+                    Fluttertoast.showToast(
+                    msg: "Credientials mismatched",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                return;
+              }
+              
+              else 
+              {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Home()),
               );
+              }
             },
             child: Text(
               "Login Now!",

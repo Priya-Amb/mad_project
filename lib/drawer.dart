@@ -52,22 +52,22 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Mediburn'),
-              onTap: () => onTap(context, 3, 'Mediburn'),
+              onTap: () => onTap(context, 0, 'Mediburn'),
             ),
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Medicare'),
-              onTap: () => onTap(context, 2, 'Medicare'),
+              onTap: () => onTap(context, 1, 'Medicare'),
             ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
-              onTap: () => onTap(context, 1, 'Profile'),
+              onTap: () => onTap(context, 3, 'Profile'),
             ),
             ListTile(
               leading: Icon(Icons.question_answer),
               title: Text('About'),
-              onTap: () => onTap(context, 0, 'About'),
+              onTap: () => onTap(context, 2, 'About'),
             ),
             ListTile(
                 leading: Icon(Icons.exit_to_app),

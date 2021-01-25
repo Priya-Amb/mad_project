@@ -11,9 +11,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String title = 'Home';
+  String title = 'Mediburn';
   int index = 0;
-  List<Widget> list = [About(), Profile(), Medicare(), Mediburn()];
+  List<Widget> list = [Mediburn(), Medicare(), About(), Profile(),];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

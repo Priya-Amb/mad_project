@@ -41,21 +41,6 @@ class _AboutState extends State<About> {
           style: TextStyle(fontSize: 12, color: Colors.deepPurple),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.only(left: 16, top: 25),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Let's Continue",
-                style: TextStyle(fontSize: 12, color: Colors.deepPurple),
-              ),
-              Icon(Icons.arrow_right_alt_rounded)
-            ],
-          ),
-        ),
-      ),
     ]);
   }
 }
